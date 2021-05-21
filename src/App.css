@@ -1,0 +1,16 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.App {
+  display: flex;
+  flex-wrap: wrap;
+}
+.App li {
+  list-style-type: none;
+  padding: 10px;
+  border: 1px;
+  border-style: solid;
+  margin: 22px 0 0 10px;
+  min-width: 200px;
+}
