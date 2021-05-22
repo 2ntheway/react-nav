@@ -1,13 +1,26 @@
 import React, { Component,Fragment} from 'react';
 import './Content.css'
 import Item from './Item';
+import oneImg from './img/1.jpg'
+import twoImg from './img/2.jpg'
+import thereImg from './img/3.jpg'
+import fourImg from './img/4.jpg'
+import fiveImg from './img/5.jpg'
+import sixImg from './img/6.jpg'
+import sevenImg from './img/7.jpg'
+import eightImg from './img/8.jpg'
 class Content extends Component {
   constructor(props){
     super(props)
     this.state={
-      title:['腾讯 AlloyTeam 团队','ISUX','FEX','淘宝前端团队（FED）','凹凸实验室','奇舞团','阿里巴巴国际UED团队','EFE'],
-      desc:['腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站','腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站','百度Web前端研发部出品','用技术为体验提供无限可能','京东用户体验设计部出品','奇虎360旗下前端开发团队出品','在更新的屏幕里创造出更好的产品和更优的体验','由百度多个遵循统一技术体系的前端团队所组成'],
-      pic:'import onePic from "./img/2.jpg";'
+      list:[
+      {title:'腾讯 AlloyTeam 团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:oneImg},{title:'ISUX',desc:'腾讯社交用户体验设计，简称ISUX',img:twoImg},
+      {title:'FEX',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:thereImg},
+      {title:'淘宝前端团队（FED）',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fourImg},
+      {title:'凹凸实验室',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fiveImg},
+      {title:'奇舞团',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sixImg},
+      {title:'阿里巴巴国际UED团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sevenImg},
+      {title:'EFE',desc:'由百度多个遵循统一技术体系的前端团队所组成',img:eightImg}]
     }
     }
     render() {
@@ -15,10 +28,9 @@ class Content extends Component {
         <Fragment>
           <h3>团队组织</h3>
           <ul className="App">
-            {/* one */}
             {
-              this.state.title.map((element, index) => {
-                return <Item img={require(`./img/${index+1}.jpg`)} title={this.state.title[index]} desc={this.state.desc[index]}/>
+              this.state.list.map((element, index) => {
+                return <Item key={index} img={element.img} title={element.title} desc={element.desc}/>
               })             
             }
       </ul>
@@ -26,5 +38,4 @@ class Content extends Component {
     );
 }
 }
-
-  export default Content;
+export default Content;
