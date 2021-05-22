@@ -26,6 +26,8 @@
 .log {
   display: flex;
   font-size: 14px;
+  font-weight: 700;
+
   color: #3273dc;
   height: 40px;
   align-items: center;
