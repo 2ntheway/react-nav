@@ -1,4 +1,5 @@
 import './Content.css'
+import './Item'
 import React, {Fragment } from 'react';
 import onePic from "./img/1.jpg";
 import twoPic from "./img/2.jpg";
@@ -8,107 +9,28 @@ import fivePic from "./img/5.png";
 import sixPic from "./img/6.png";
 import sevenPic from "./img/7.ico";
 import eightPic from "./img/8.png";
+import Item from './Item';
 function Content() {
     return (
       <Fragment>
         <h3>团队组织</h3>
         <ul className="App">
-          {/* one */}
-          <li>
-            <div className='log'>
-            <img src={onePic}/>
-            腾讯 AlloyTeam 团队
-            </div>
-            <div className='des'>
-            腾讯Web前端团队，代表作品WebQQ，致力于前端技术的研究
-            </div>
-            <div>
-            </div>
-          </li>
+          {/* one */} 
+            <Item img={onePic} title="腾讯 AlloyTeam 团队" desc="腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站"/>
           {/* two */}
-          <li>
-            <div className='log'>
-            <img src={twoPic}/>
-            ISUX
-            </div>
-            <div className='des'>
-            腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站
-            </div>
-            <div>
-            </div>
-          </li>
+            <Item img={twoPic} title="ISUX" desc="腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站"/>       
           {/* there */}
-          <li>
-            <div className='log'>
-            <img src={therePic}/>
-            FEX
-            </div>
-            <div className='des'>
-            百度Web前端研发部出品
-            </div>
-            <div>
-            </div>
-          </li>
+            <Item img={therePic} title="FEX" desc="百度Web前端研发部出品"/>       
           {/* four */}
-          <li>
-            <div className='log'>
-            <img src={fourPic}/>
-            淘宝前端团队（FED）
-            </div>
-            <div className='des'>
-            用技术为体验提供无限可能
-            </div>
-            <div>
-            </div>
-          </li>
+            <Item img={fourPic} title="淘宝前端团队（FED）" desc="用技术为体验提供无限可能"/>  
           {/* five */}
-          <li>
-            <div className='log'>
-            <img src={fivePic}/>
-            凹凸实验室
-            </div>
-            <div className='des'>
-            京东用户体验设计部出品
-            </div>
-            <div>
-            </div>
-          </li>
+            <Item img={fivePic} title="凹凸实验室" desc="京东用户体验设计部出品"/>                 
           {/* six */}
-          <li>
-            <div className='log'>
-            <img src={sixPic}/>
-            奇舞团
-            </div>
-            <div className='des'>
-            奇虎360旗下前端开发团队出品
-            </div>
-            <div>
-            </div>
-          </li>
+            <Item img={sixPic} title="奇舞团" desc="奇虎360旗下前端开发团队出品"/>        
           {/* seven */}
-          <li>
-            <div className='log'>
-            <img src={sevenPic}/>
-            阿里巴巴国际UED团队
-            </div>
-            <div className='des'>
-            在更新的屏幕里创造出更好的产品和更优的体验
-            </div>
-            <div>
-            </div>
-          </li>
+            <Item img={sevenPic} title="阿里巴巴国际UED团队" desc="在更新的屏幕里创造出更好的产品和更优的体验"/>   
           {/* eight */}
-          <li>
-            <div className='log'>
-            <img src={eightPic}/>
-            EFE
-            </div>
-            <div className='des'>
-            由百度多个遵循统一技术体系的前端团队所组成
-            </div>
-            <div>
-            </div>
-          </li>
+            <Item img={eightPic} title="EFE" desc="由百度多个遵循统一技术体系的前端团队所组成"/>   
     </ul>
     </Fragment>
     );
