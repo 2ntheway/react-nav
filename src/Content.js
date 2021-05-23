@@ -8,8 +8,17 @@ class Content extends Component {
     super(props)
     this.state = {
       data:[]     
-    }
-    this.getDate = this.getDate.bind(this);
+    }         
+  }
+  componentDidMount(){
+    axios.get('http://42.193.52.117:8080/data')
+  .then((response) => {
+    console.log(response.data['data']);
+    this.setState({data: response.data['data']})
+  })
+  .catch((error)=>{
+    console.log(error);
+  });
   }  
   render() {
     return (
@@ -37,17 +46,6 @@ class Content extends Component {
       </Fragment>
     );
   }
-}
-
-function getDate() {
-  axios.get('http://42.193.52.117:8080/data')
-.then((response) => {
-  console.log(response.data['data']);
-  this.setState({data: response.data['data']})
-})
-.catch((error)=>{
-  console.log(error);
-});
 }
 
 export default Content;
