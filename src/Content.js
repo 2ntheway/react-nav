@@ -14,7 +14,7 @@ class Content extends Component {
   constructor(props){
     super(props)
     this.state={
-      gr:['团队组织','团队组织'],
+      gr:['团队组织','团伙作战'],
       list:[[
       {title:'腾讯 AlloyTeam 团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:oneImg},{title:'ISUX',desc:'腾讯社交用户体验设计，简称ISUX',img:twoImg},
       {title:'FEX',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:thereImg},
