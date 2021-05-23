@@ -13,23 +13,42 @@ import eightImg from './img/8.jpg'
 class Content extends Component {
   constructor(props){
     super(props)
-    this.state={
-      gr:['团队组织','团伙作战'],
-      list:[[
-      {title:'腾讯 AlloyTeam 团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:oneImg},{title:'ISUX',desc:'腾讯社交用户体验设计，简称ISUX',img:twoImg},
-      {title:'FEX',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:thereImg},
-      {title:'淘宝前端团队（FED）',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fourImg},
-      {title:'凹凸实验室',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fiveImg},
-      {title:'奇舞团',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sixImg},
-      {title:'阿里巴巴国际UED团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sevenImg},
-      {title:'EFE',desc:'由百度多个遵循统一技术体系的前端团队所组成',img:eightImg},
-      ],[{title:'腾讯 AlloyTeam 团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:oneImg},{title:'ISUX',desc:'腾讯社交用户体验设计，简称ISUX',img:twoImg},
-      {title:'FEX',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:thereImg},
-      {title:'淘宝前端团队（FED）',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fourImg},
-      {title:'凹凸实验室',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fiveImg},
-      {title:'奇舞团',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sixImg},
-      {title:'阿里巴巴国际UED团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sevenImg},
-      {title:'EFE',desc:'由百度多个遵循统一技术体系的前端团队所组成',img:eightImg},]]
+    this.state={     
+      data:[
+        {group:'团队组织',
+            list:[
+              {title:'腾讯 AlloyTeam 团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:oneImg},
+              {title:'ISUX',desc:'腾讯社交用户体验设计，简称ISUX',img:twoImg},
+              {title:'FEX',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:thereImg},
+              {title:'淘宝前端团队（FED）',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fourImg},
+              {title:'凹凸实验室',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fiveImg},
+              {title:'奇舞团',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sixImg},
+              {title:'阿里巴巴国际UED团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sevenImg},
+              {title:'EFE',desc:'由百度多个遵循统一技术体系的前端团队所组成',img:eightImg},
+      ]},
+        {group:'团伙作战',
+            list:[
+              {title:'腾讯 AlloyTeam 团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:oneImg},
+              {title:'ISUX',desc:'腾讯社交用户体验设计，简称ISUX',img:twoImg},
+              {title:'FEX',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:thereImg},
+              {title:'淘宝前端团队（FED）',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fourImg},
+              {title:'凹凸实验室',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fiveImg},
+              {title:'奇舞团',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sixImg},
+              {title:'阿里巴巴国际UED团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sevenImg},
+              {title:'EFE',desc:'由百度多个遵循统一技术体系的前端团队所组成',img:eightImg},
+      ]},
+        {group:'团伙作战',
+            list:[
+              {title:'腾讯 AlloyTeam 团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:oneImg},
+              {title:'ISUX',desc:'腾讯社交用户体验设计，简称ISUX',img:twoImg},
+              {title:'FEX',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:thereImg},
+              {title:'淘宝前端团队（FED）',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fourImg},
+              {title:'凹凸实验室',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:fiveImg},
+              {title:'奇舞团',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sixImg},
+              {title:'阿里巴巴国际UED团队',desc:'腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站',img:sevenImg},
+              {title:'EFE',desc:'由百度多个遵循统一技术体系的前端团队所组成',img:eightImg},
+  ]}]
+     
     }
     }
     render() {
@@ -37,15 +56,15 @@ class Content extends Component {
         <Fragment>
           <div>
             {
-              this.state.gr.forEach(function(element, index, arr){
+              this.state.data.map(function(element, index){
                 return (
                   <Fragment>
-                    <Group key={index} cont={element}/>
+                    <Group key={index} cont={element.group}/>
                     <ul className="App">
                     {
-                      this.state.list[{index}].map((element, index) => {
+                      element.list.map((items, id) => {
                         return (
-                        <Item key={index} img={element.img} title={element.title} desc={element.desc}/>)
+                        <Item key={id} img={items.img} title={items.title} desc={items.desc}/>)
                       })             
                     }
                     </ul>
@@ -53,16 +72,9 @@ class Content extends Component {
                 )
               }
               )
-            }              
+            }        
+     
         
-          {/* <ul className="App">
-            {
-              this.state.list.map((element, index) => {
-                return (
-                <Item key={index} img={element.img} title={element.title} desc={element.desc}/>)
-              })             
-            }
-        </ul> */}
         </div>
       </Fragment>
     );
