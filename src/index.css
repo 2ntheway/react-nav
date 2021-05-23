@@ -22,7 +22,7 @@ code {
 #root > div:nth-child(2) {
   flex: 1;
   padding-bottom: 20px;
-  margin: 20px 30px;
+  margin: 0px 30px;
 }
 #root > div:nth-child(1) li {
   height: 32;

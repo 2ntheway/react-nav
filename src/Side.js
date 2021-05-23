@@ -44,9 +44,7 @@ class Side extends Component{
             </ul>   
             <h4>留言</h4>
             </div>
-
-            </Fragment>
-  
+            </Fragment>  
         )
     }
 }
