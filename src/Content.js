@@ -18,6 +18,7 @@ class Content extends Component {
     this.handleInputImg = this.handleInputImg.bind(this);
     this.handleInputTitle = this.handleInputTitle.bind(this);
     this.handleInputDesc = this.handleInputDesc.bind(this);
+    this.handleInputGroup = this.handleInputGroup.bind(this);
   }
   componentDidMount() {
     axios
@@ -36,7 +37,10 @@ class Content extends Component {
         <div>
           <div>
             选择分类
-            <select>
+            <select
+              value={this.state.inputValue.group}
+              onChange={this.handleInputGroup}
+            >
               <option>团队组织</option>
               <option>团伙作战</option>
             </select>
@@ -98,6 +102,11 @@ class Content extends Component {
   handleInputDesc(e) {
     this.setState({
       inputValue: { ...this.state.inputValue, ...{ desc: e.target.value } },
+    });
+  }
+  handleInputGroup(e) {
+    this.setState({
+      inputValue: { ...this.state.inputValue, ...{ group: e.target.value } },
     });
   }
 }
