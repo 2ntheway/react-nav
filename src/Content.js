@@ -34,8 +34,8 @@ class Content extends Component {
   render() {
     return (
       <Fragment>
-        <div>
-          <div>
+        <div className="bd">
+          <div className="bd-input">
             选择分类
             <select
               value={this.state.inputValue.group}
@@ -65,7 +65,7 @@ class Content extends Component {
             />
             <input type="button" value="提交" />
           </div>
-          <div>
+          <div className="bd-contex">
             {this.state.data.map(function (element, index) {
               return (
                 <Fragment>
