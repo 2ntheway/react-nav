@@ -8,7 +8,16 @@ class Content extends Component {
     super(props);
     this.state = {
       data: [],
+      inputValue: {
+        group: "",
+        title: "",
+        desc: "",
+        img: "",
+      },
     };
+    this.handleInputImg = this.handleInputImg.bind(this);
+    this.handleInputTitle = this.handleInputTitle.bind(this);
+    this.handleInputDesc = this.handleInputDesc.bind(this);
   }
   componentDidMount() {
     axios
@@ -25,28 +34,71 @@ class Content extends Component {
     return (
       <Fragment>
         <div>
-          {this.state.data.map(function (element, index) {
-            return (
-              <Fragment>
-                <Group key={index} cont={element.group} />
-                <ul className="App">
-                  {element.list.map((items, id) => {
-                    return (
-                      <Item
-                        key={id}
-                        img={items.img}
-                        title={items.title}
-                        desc={items.desc}
-                      />
-                    );
-                  })}
-                </ul>
-              </Fragment>
-            );
-          })}
+          <div>
+            选择分类
+            <select>
+              <option>团队组织</option>
+              <option>团伙作战</option>
+            </select>
+            图片:
+            <input
+              type="text"
+              value={this.state.inputValue.img}
+              onChange={this.handleInputImg}
+            />
+            标题:
+            <input
+              type="text"
+              value={this.state.inputValue.title}
+              onChange={this.handleInputTitle}
+            />
+            描述:
+            <input
+              type="text"
+              value={this.state.inputValue.desc}
+              onChange={this.handleInputDesc}
+            />
+            <input type="button" value="提交" />
+          </div>
+          <div>
+            {this.state.data.map(function (element, index) {
+              return (
+                <Fragment>
+                  <Group key={index} cont={element.group} />
+                  <ul className="App">
+                    {element.list.map((items, id) => {
+                      return (
+                        <Item
+                          key={id}
+                          img={items.img}
+                          title={items.title}
+                          desc={items.desc}
+                        />
+                      );
+                    })}
+                  </ul>
+                </Fragment>
+              );
+            })}
+          </div>
         </div>
       </Fragment>
     );
+  }
+  handleInputImg(e) {
+    this.setState({
+      inputValue: { ...this.state.inputValue, ...{ img: e.target.value } },
+    });
+  }
+  handleInputTitle(e) {
+    this.setState({
+      inputValue: { ...this.state.inputValue, ...{ title: e.target.value } },
+    });
+  }
+  handleInputDesc(e) {
+    this.setState({
+      inputValue: { ...this.state.inputValue, ...{ desc: e.target.value } },
+    });
   }
 }
 
