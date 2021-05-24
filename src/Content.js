@@ -41,8 +41,9 @@ class Content extends Component {
               value={this.state.inputValue.group}
               onChange={this.handleInputGroup}
             >
-              <option>团队组织</option>
-              <option>团伙作战</option>
+              <option value="">请选择</option>
+              <option value="团队组织">团队组织</option>
+              <option value="团伙作战">团伙作战</option>
             </select>
             图片:
             <input
