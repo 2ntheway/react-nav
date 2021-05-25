@@ -3,6 +3,9 @@ import "./Content.css";
 import Item from "../Item/Item";
 import Group from "../Group/Group";
 import axios from "axios";
+import { Input } from "antd";
+import { Select } from "antd";
+const { Option } = Select;
 class Content extends Component {
   constructor(props) {
     super(props);
@@ -38,28 +41,28 @@ class Content extends Component {
         <div className="bd">
           <div className="bd-input">
             选择分类
-            <select
+            <Select
               value={this.state.inputValue.group}
               onChange={this.handleInputGroup}
             >
-              <option value="">请选择</option>
-              <option value="团队组织">团队组织</option>
-              <option value="团伙作战">团伙作战</option>
-            </select>
+              <Option value="">请选择</Option>
+              <Option value="团队组织">团队组织</Option>
+              <Option value="团伙作战">团伙作战</Option>
+            </Select>
             图片:
-            <input
+            <Input
               type="text"
               value={this.state.inputValue.img}
               onChange={this.handleInputImg}
             />
             标题:
-            <input
+            <Input
               type="text"
               value={this.state.inputValue.title}
               onChange={this.handleInputTitle}
             />
             描述:
-            <input
+            <Input
               type="text"
               value={this.state.inputValue.desc}
               onChange={this.handleInputDesc}
@@ -112,9 +115,12 @@ class Content extends Component {
     });
   }
   // 获取添加的分组信息
-  handleInputGroup(e) {
+  handleInputGroup(value) {
     this.setState({
-      inputValue: { ...this.state.inputValue, ...{ group: e.target.value } },
+      inputValue: {
+        ...this.state.inputValue,
+        ...{ group: `selected ${value}` },
+      },
     });
   }
   // 提交添加的数据
