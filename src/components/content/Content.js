@@ -5,9 +5,7 @@ import Group from "../group/Group";
 // 引入用于网站get数据
 import axios from "axios";
 // 引入antd使用控件
-import { Input } from "antd";
-import { Select } from "antd";
-import { Button } from "antd";
+import { Input, Select, Button } from "antd";
 const { Option } = Select;
 class Content extends Component {
   constructor(props) {
@@ -108,6 +106,7 @@ class Content extends Component {
   // 获取添加的title信息
   handleInputTitle(e) {
     this.setState({
+      // 展开修改对应的值
       inputValue: { ...this.state.inputValue, ...{ title: e.target.value } },
     });
   }
