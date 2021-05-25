@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
 import "./Content.css";
-import Item from "../Item/Item";
-import Group from "../Group/Group";
+import Item from "../item/Item";
+import Group from "../group/Group";
+// 引入用于网站get数据
 import axios from "axios";
+// 引入antd使用控件
 import { Input } from "antd";
 import { Select } from "antd";
+import { Button } from "antd";
 const { Option } = Select;
 class Content extends Component {
   constructor(props) {
@@ -45,7 +48,6 @@ class Content extends Component {
               value={this.state.inputValue.group}
               onChange={this.handleInputGroup}
             >
-              <Option value="">请选择</Option>
               <Option value="团队组织">团队组织</Option>
               <Option value="团伙作战">团伙作战</Option>
             </Select>
@@ -67,7 +69,9 @@ class Content extends Component {
               value={this.state.inputValue.desc}
               onChange={this.handleInputDesc}
             />
-            <button onClick={this.handleBthClick}>提交</button>
+            <Button type="primary" onClick={this.handleBthClick}>
+              提交
+            </Button>
           </div>
           <div className="bd-contex">
             {this.state.data.map(function (element, index) {
@@ -117,10 +121,8 @@ class Content extends Component {
   // 获取添加的分组信息
   handleInputGroup(value) {
     this.setState({
-      inputValue: {
-        ...this.state.inputValue,
-        ...{ group: `selected ${value}` },
-      },
+      // 更新需要修改的属性
+      inputValue: { ...this.state.inputValue, ...{ group: `${value}` } },
     });
   }
   // 提交添加的数据
@@ -134,13 +136,13 @@ class Content extends Component {
           img: this.state.inputValue.img,
         };
         // 拷贝state里面的数据
-        const items = [...this.state.data];
+        const units = [...this.state.data];
         // 拷贝需要修改数据的部分并添加数据
-        const item = [...items[index].list, tmp];
+        const unit = [...units[index].list, tmp];
         // 把修改后的数据放回去
-        items[index].list = item;
+        units[index].list = unit;
         // 更新state里面的数据
-        this.setState({ items });
+        this.setState({ units });
       }
     });
   }
