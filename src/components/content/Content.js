@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import "./Content.css";
-import Item from "./Item";
-import Group from "./Group";
+import Item from "../Item/Item";
+import Group from "../Group/Group";
 import axios from "axios";
 class Content extends Component {
   constructor(props) {

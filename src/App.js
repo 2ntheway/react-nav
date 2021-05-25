@@ -1,5 +1,5 @@
-import Content from "./Content";
-import Side from "./Side";
+import Content from "./components/content/Content";
+import Side from "./components/Side/Side";
 import React, { Component, Fragment } from "react";
 class App extends Component {
   render() {
