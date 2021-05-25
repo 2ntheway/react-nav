@@ -106,7 +106,6 @@ class Content extends Component {
   // 获取添加的title信息
   handleInputTitle(e) {
     this.setState({
-      // 展开修改对应的值
       inputValue: { ...this.state.inputValue, ...{ title: e.target.value } },
     });
   }

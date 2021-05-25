@@ -43,15 +43,15 @@ img {
   height: 40px;
   padding-right: 2px;
 }
+.bd {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+}
 .bd .bd-input {
   display: flex;
   flex-direction: column;
   font-size: 12px;
   width: 100px;
   align-self: flex-end;
-}
-.bd {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-end;
 }
