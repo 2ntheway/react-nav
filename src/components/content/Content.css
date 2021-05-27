@@ -46,12 +46,14 @@ img {
 .bd {
   display: flex;
   flex-direction: column;
-  align-content: flex-end;
+  /* align-content: flex-end; */
 }
 .bd .bd-input {
+  font-size: 12px;
+  align-self: flex-end;
+}
+.ant-modal-body {
+  color: red;
   display: flex;
   flex-direction: column;
-  font-size: 12px;
-  width: 100px;
-  align-self: flex-end;
 }

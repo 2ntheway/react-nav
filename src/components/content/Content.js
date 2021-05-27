@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState } from "react";
 import "./Content.css";
 import Item from "../item/Item";
 import Group from "../group/Group";
 // 引入用于网站get数据
 import axios from "axios";
 // 引入antd使用控件
-import { Input, Select, Button } from "antd";
+import { Input, Select, Button, Modal } from "antd";
 const { Option } = Select;
 class Content extends Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class Content extends Component {
         desc: "",
         img: "",
       },
+      visible: true,
     };
     this.handleInputImg = this.handleInputImg.bind(this);
     this.handleInputTitle = this.handleInputTitle.bind(this);
@@ -36,40 +37,62 @@ class Content extends Component {
         console.log(error);
       });
   }
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  hideModal = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
   render() {
     return (
       <Fragment>
         <div className="bd">
           <div className="bd-input">
-            选择分类
-            <Select
-              value={this.state.inputValue.group}
-              onChange={this.handleInputGroup}
-            >
-              <Option value="团队组织">团队组织</Option>
-              <Option value="团伙作战">团伙作战</Option>
-            </Select>
-            图片:
-            <Input
-              type="text"
-              value={this.state.inputValue.img}
-              onChange={this.handleInputImg}
-            />
-            标题:
-            <Input
-              type="text"
-              value={this.state.inputValue.title}
-              onChange={this.handleInputTitle}
-            />
-            描述:
-            <Input
-              type="text"
-              value={this.state.inputValue.desc}
-              onChange={this.handleInputDesc}
-            />
-            <Button type="primary" onClick={this.handleBthClick}>
-              提交
+            <Button type="primary" onClick={this.showModal}>
+              数据添加
             </Button>
+            <Modal
+              title="表单"
+              visible={this.state.visible}
+              onOk={this.handleBthClick}
+              onCancel={this.hideModal}
+              okText="提交"
+              cancelText="关闭"
+            >
+              请选择
+              <Select
+                placeholder="Search to Select"
+                value={this.state.inputValue.group}
+                onChange={this.handleInputGroup}
+              >
+                <Option value="团队组织">团队组织</Option>
+                <Option value="团伙作战">团伙作战</Option>
+              </Select>
+              图片:
+              <Input
+                type="text"
+                value={this.state.inputValue.img}
+                onChange={this.handleInputImg}
+              />
+              标题:
+              <Input
+                type="text"
+                value={this.state.inputValue.title}
+                onChange={this.handleInputTitle}
+              />
+              描述:
+              <Input
+                type="text"
+                value={this.state.inputValue.desc}
+                onChange={this.handleInputDesc}
+              />
+            </Modal>
           </div>
           <div className="bd-contex">
             {this.state.data.map(function (element, index) {
