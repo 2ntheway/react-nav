@@ -18,7 +18,7 @@ class Content extends Component {
         desc: "",
         img: "",
       },
-      visible: true,
+      visible: false,
     };
     this.handleInputImg = this.handleInputImg.bind(this);
     this.handleInputTitle = this.handleInputTitle.bind(this);
@@ -164,6 +164,7 @@ class Content extends Component {
         units[index].list = unit;
         // 更新state里面的数据
         this.setState({ units });
+        this.state.visible = false;
       }
     });
   }
