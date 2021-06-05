@@ -19,6 +19,13 @@ class Content extends Component {
         img: "",
       },
       visible: false,
+      // 用于提示用户提示信息
+      errorMessage: {
+        group: "",
+        title: "",
+        desc: "",
+        img: "",
+      },
     };
     this.handleInputImg = this.handleInputImg.bind(this);
     this.handleInputTitle = this.handleInputTitle.bind(this);
@@ -53,6 +60,11 @@ class Content extends Component {
     return (
       <Fragment>
         <div className="bd">
+          <div>
+            <a href="#/weibohot" target="_blank">
+              微博热榜
+            </a>
+          </div>
           <div className="bd-input">
             <Button type="primary" onClick={this.showModal}>
               数据添加
@@ -74,24 +86,40 @@ class Content extends Component {
                 <Option value="团队组织">团队组织</Option>
                 <Option value="团伙作战">团伙作战</Option>
               </Select>
+              {/* 错误提示信息 */}
+              {this.state.errorMessage ? (
+                <span>{this.state.errorMessage.group}</span>
+              ) : null}
               图片:
               <Input
                 type="text"
                 value={this.state.inputValue.img}
                 onChange={this.handleInputImg}
               />
+              {/* 错误提示信息 */}
+              {this.state.errorMessage ? (
+                <span>{this.state.errorMessage.img}</span>
+              ) : null}
               标题:
               <Input
                 type="text"
                 value={this.state.inputValue.title}
                 onChange={this.handleInputTitle}
               />
+              {/* 错误提示信息 */}
+              {this.state.errorMessage ? (
+                <span>{this.state.errorMessage.title}</span>
+              ) : null}
               描述:
               <Input
                 type="text"
                 value={this.state.inputValue.desc}
                 onChange={this.handleInputDesc}
               />
+              {/* 错误提示信息 */}
+              {this.state.errorMessage ? (
+                <span>{this.state.errorMessage.desc}</span>
+              ) : null}
             </Modal>
           </div>
           <div className="bd-contex">
@@ -148,6 +176,35 @@ class Content extends Component {
   }
   // 提交添加的数据
   handleBthClick() {
+    // 提示用户输入，这个地方设置为生效？待解决
+    if (this.state.inputValue.img === "") {
+      console.log(console.log(this.state.errorMessage));
+      this.setState({
+        // errorMessage: "输入不能为空",
+        errorMessage: { ...this.state.errorMessage, ...{ img: "必填项" } },
+      });
+      console.log(console.log(this.state.errorMessage));
+    }
+    if (this.state.inputValue.title === "") {
+      console.log(this.state.errorMessage);
+      this.setState({
+        // errorMessage: "输入不能为空",
+        errorMessage: { ...this.state.errorMessage, ...{ title: "必填项" } },
+      });
+    }
+    if (this.state.inputValue.desc === "") {
+      this.setState({
+        // errorMessage: "输入不能为空",
+        errorMessage: { ...this.state.errorMessage, ...{ desc: "必填项" } },
+      });
+    }
+    if (this.state.inputValue.group === "") {
+      this.setState({
+        // errorMessage: "输入不能为空",
+        errorMessage: { ...this.state.errorMessage, ...{ group: "必填项" } },
+      });
+    }
+
     this.state.data.map((item, index) => {
       if (item.group == this.state.inputValue.group) {
         // 构建对象

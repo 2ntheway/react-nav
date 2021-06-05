@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import Hot from "./components/hot/Hot";
 import "./index.css";
-import Router from "./Router";
-
 ReactDOM.render(
   <React.StrictMode>
-    <Router />,
+    <Hot />
   </React.StrictMode>,
   document.getElementById("root")
 );
