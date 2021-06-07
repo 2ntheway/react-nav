@@ -20,12 +20,10 @@ class Content extends Component {
       },
       visible: false,
       // 用于提示用户提示信息
-      errorMessage: {
-        group: "",
-        title: "",
-        desc: "",
-        img: "",
-      },
+      group_errorMessage: "",
+      title_errorMessage: "",
+      desc_errorMessage: "",
+      img_errorMessage: "",
     };
     this.handleInputImg = this.handleInputImg.bind(this);
     this.handleInputTitle = this.handleInputTitle.bind(this);
@@ -37,7 +35,6 @@ class Content extends Component {
     axios
       .get("http://42.193.52.117:8080/data")
       .then((response) => {
-        console.log(response.data["data"]);
         this.setState({ data: response.data["data"] });
       })
       .catch((error) => {
@@ -87,8 +84,8 @@ class Content extends Component {
                 <Option value="团伙作战">团伙作战</Option>
               </Select>
               {/* 错误提示信息 */}
-              {this.state.errorMessage ? (
-                <span>{this.state.errorMessage.group}</span>
+              {this.state.group_errorMessage ? (
+                <span>{this.state.group_errorMessage}</span>
               ) : null}
               图片:
               <Input
@@ -97,8 +94,8 @@ class Content extends Component {
                 onChange={this.handleInputImg}
               />
               {/* 错误提示信息 */}
-              {this.state.errorMessage ? (
-                <span>{this.state.errorMessage.img}</span>
+              {this.state.img_errorMessage ? (
+                <span>{this.state.img_errorMessage}</span>
               ) : null}
               标题:
               <Input
@@ -107,8 +104,8 @@ class Content extends Component {
                 onChange={this.handleInputTitle}
               />
               {/* 错误提示信息 */}
-              {this.state.errorMessage ? (
-                <span>{this.state.errorMessage.title}</span>
+              {this.state.title_errorMessage ? (
+                <span>{this.state.title_errorMessage}</span>
               ) : null}
               描述:
               <Input
@@ -117,8 +114,8 @@ class Content extends Component {
                 onChange={this.handleInputDesc}
               />
               {/* 错误提示信息 */}
-              {this.state.errorMessage ? (
-                <span>{this.state.errorMessage.desc}</span>
+              {this.state.desc_errorMessage ? (
+                <span>{this.state.desc_errorMessage}</span>
               ) : null}
             </Modal>
           </div>
@@ -177,53 +174,64 @@ class Content extends Component {
   // 提交添加的数据
   handleBthClick() {
     // 提示用户输入，这个地方设置为生效？待解决
+    this.setState({
+      group_errorMessage: "",
+      title_errorMessage: "",
+      desc_errorMessage: "",
+      img_errorMessage: "",
+    });
+
     if (this.state.inputValue.img === "") {
-      console.log(console.log(this.state.errorMessage));
       this.setState({
         // errorMessage: "输入不能为空",
-        errorMessage: { ...this.state.errorMessage, ...{ img: "必填项" } },
+        img_errorMessage: "图片必选项",
       });
-      console.log(console.log(this.state.errorMessage));
     }
     if (this.state.inputValue.title === "") {
-      console.log(this.state.errorMessage);
       this.setState({
         // errorMessage: "输入不能为空",
-        errorMessage: { ...this.state.errorMessage, ...{ title: "必填项" } },
+        title_errorMessage: "标题必选项",
       });
     }
     if (this.state.inputValue.desc === "") {
       this.setState({
         // errorMessage: "输入不能为空",
-        errorMessage: { ...this.state.errorMessage, ...{ desc: "必填项" } },
+        desc_errorMessage: "描述必选项",
       });
     }
     if (this.state.inputValue.group === "") {
       this.setState({
         // errorMessage: "输入不能为空",
-        errorMessage: { ...this.state.errorMessage, ...{ group: "必填项" } },
+        group_errorMessage: "分组必选项",
       });
     }
-
-    this.state.data.map((item, index) => {
-      if (item.group == this.state.inputValue.group) {
-        // 构建对象
-        const tmp = {
-          title: this.state.inputValue.title,
-          desc: this.state.inputValue.desc,
-          img: this.state.inputValue.img,
-        };
-        // 拷贝state里面的数据
-        const units = [...this.state.data];
-        // 拷贝需要修改数据的部分并添加数据
-        const unit = [...units[index].list, tmp];
-        // 把修改后的数据放回去
-        units[index].list = unit;
-        // 更新state里面的数据
-        this.setState({ units });
-        this.state.visible = false;
-      }
-    });
+    // 数据输入完整后修改state的data数据
+    if (
+      this.state.inputValue.group &&
+      this.state.inputValue.title &&
+      this.state.inputValue.desc &&
+      this.state.inputValue.img
+    ) {
+      this.state.data.map((item, index) => {
+        if (item.group == this.state.inputValue.group) {
+          // 构建对象
+          const tmp = {
+            title: this.state.inputValue.title,
+            desc: this.state.inputValue.desc,
+            img: this.state.inputValue.img,
+          };
+          // 拷贝state里面的数据
+          const units = [...this.state.data];
+          // 拷贝需要修改数据的部分并添加数据
+          const unit = [...units[index].list, tmp];
+          // 把修改后的数据放回去
+          units[index].list = unit;
+          // 更新state里面的数据
+          this.setState({ units });
+          this.state.visible = false;
+        }
+      });
+    }
   }
 }
 

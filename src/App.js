@@ -1,15 +1,16 @@
-import Content from "./components/content/Content";
-import Side from "./components/side/Side";
+import React, { Component } from "react";
+import Nav from "./nav";
 import Hot from "./components/hot/Hot";
-import React, { Component, Fragment } from "react";
-
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 class App extends Component {
   render() {
     return (
-      <Fragment>
-        <Side />
-        <Content />
-      </Fragment>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Nav} />
+          <Route exact path="/weibohot" component={Hot} />
+        </Switch>
+      </Router>
     );
   }
 }
