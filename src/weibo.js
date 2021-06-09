@@ -7,6 +7,11 @@ const path = require("path");
 //创建爬取数据的函数
 let getNewList = async () => {
   //创建一个Browser（浏览器）实例
+  /*   linux下启动chrome的方式必须加--no-sandbox参数
+   */ /*   const browser = await puppeteer.launch({
+    args: ['--no-sandbox'],
+    headless: true
+}) */
   const browser = await puppeteer.launch();
   //在浏览器中创建一个新的页面
   const page = await browser.newPage();
@@ -57,6 +62,7 @@ let getNewList = async () => {
 getNewList().then((res) => {
   //将爬取的数据转为json格式
   let list = JSON.stringify(res);
+  console.log(list);
   //指定存储数据的json文件
   let file = path.join(__dirname, "newList.json");
   //将爬取的数据写入json文件

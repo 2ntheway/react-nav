@@ -1,12 +1,21 @@
 import React, { Component, Fragment } from "react";
-import data from "../../newList.json";
-
+import axios from "axios";
 class Hot extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: data,
+      data: [],
     };
+  }
+  componentDidMount() {
+    axios
+      .get("http://42.193.52.117:8080/weibo")
+      .then((response) => {
+        this.setState({ data: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   render() {
     return (
