@@ -4,6 +4,7 @@ import Item from "../item/Item";
 import Group from "../group/Group";
 // 引入用于网站get数据
 import axios from "axios";
+import { Link } from "react-router-dom";
 // 引入antd使用控件
 import { Input, Select, Button, Modal } from "antd";
 const { Option } = Select;
@@ -57,11 +58,7 @@ class Content extends Component {
     return (
       <Fragment>
         <div className="bd">
-          <div>
-            <a href="#/weibohot" target="_blank">
-              微博热榜
-            </a>
-          </div>
+          <Link to="/weibohot">微博热榜</Link>
           <div className="bd-input">
             <Button type="primary" onClick={this.showModal}>
               数据添加
