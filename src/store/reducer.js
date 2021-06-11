@@ -15,10 +15,10 @@ const defaultState = {
 };
 export default (state = defaultState, action) => {
   // 初始化sate数据
-  switch (action) {
+  switch (action.type) {
     case "init_data":
       const newState = JSON.parse(JSON.stringify(state));
-      newState.state = action.value;
+      newState.data = action.value;
       return newState;
   }
   return defaultState;
