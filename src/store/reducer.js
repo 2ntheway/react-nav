@@ -62,6 +62,13 @@ export default (state = defaultState, action) => {
       if (newState.inputValue.group === "") {
         newState.group_errorMessage = "分组不能为空";
       }
+      if (
+        newState.inputValue.group &&
+        newState.inputValue.title &&
+        newState.inputValue.desc &&
+        newState.inputValue.img
+      ) {
+      }
       return newState;
   }
   return defaultState;
