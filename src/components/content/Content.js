@@ -14,38 +14,27 @@ class Content extends Component {
     axios
       .get("http://42.193.52.117:8080/data")
       .then((response) => {
-        this.initData({ data: response.data["data"] });
+        //必须通过props去接收传参
+        this.props.initData(response.data["data"]);
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  // showModal = () => {
-  //   this.setprops({
-  //     visible: true,
-  //   });
-  // };
-
-  // hideModal = () => {
-  //   this.setprops({
-  //     visible: false,
-  //   });
-  // };
-
   render() {
     return (
       <Fragment>
         <div className="bd">
           <Link to="/weibohot">微博热榜</Link>
           <div className="bd-input">
-            <Button type="primary" onClick={this.showModal}>
+            <Button type="primary" onClick={this.props.showModal}>
               数据添加
             </Button>
             <Modal
               title="表单"
               visible={this.props.visible}
-              onOk={this.handleBthClick}
-              onCancel={this.hideModal}
+              onOk={this.props.handleBthClick}
+              onCancel={this.props.hideModal}
               okText="提交"
               cancelText="关闭"
             >
@@ -53,7 +42,7 @@ class Content extends Component {
               <Select
                 placeholder="Search to Select"
                 value={this.props.inputValue.group}
-                onChange={this.handleInputGroup}
+                onChange={this.props.handleInputGroup}
               >
                 <Option value="团队组织">团队组织</Option>
                 <Option value="团伙作战">团伙作战</Option>
@@ -66,7 +55,7 @@ class Content extends Component {
               <Input
                 type="text"
                 value={this.props.inputValue.img}
-                onChange={this.handleInputImg}
+                onChange={this.props.handleInputImg}
               />
               {/* 错误提示信息 */}
               {this.props.img_errorMessage ? (
@@ -76,7 +65,7 @@ class Content extends Component {
               <Input
                 type="text"
                 value={this.props.inputValue.title}
-                onChange={this.handleInputTitle}
+                onChange={this.props.handleInputTitle}
               />
               {/* 错误提示信息 */}
               {this.props.title_errorMessage ? (
@@ -86,7 +75,7 @@ class Content extends Component {
               <Input
                 type="text"
                 value={this.props.inputValue.desc}
-                onChange={this.handleInputDesc}
+                onChange={this.props.handleInputDesc}
               />
               {/* 错误提示信息 */}
               {this.props.desc_errorMessage ? (
@@ -144,6 +133,20 @@ const mapDispatchToProps = (dispatch) => {
         value: data,
       });
     },
+    //  显示控件
+    showModal() {
+      dispatch({
+        type: "show",
+        value: true,
+      });
+    },
+    //  关闭控件
+    hideModal() {
+      dispatch({
+        type: "close",
+        value: false,
+      });
+    },
     // 获取添加的图片信息
     handleInputImg(e) {
       const action = {
@@ -169,10 +172,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(action);
     },
     // 获取添加的分组信息
-    handleInputGroup(e) {
+    handleInputGroup(value) {
       const action = {
         type: "input_group",
-        value: e.target.value,
+        value: value,
       };
       dispatch(action);
     },
