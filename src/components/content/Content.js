@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import "./Content.css";
-import store from "../../store/index";
 import { connect } from "react-redux";
 import Item from "../item/Item";
 import Group from "../group/Group";
@@ -11,16 +10,16 @@ import { Link } from "react-router-dom";
 import { Input, Select, Button, Modal } from "antd";
 const { Option } = Select;
 class Content extends Component {
-  // componentDidMount() {
-  //   axios
-  //     .get("http://42.193.52.117:8080/data")
-  //     .then((response) => {
-  //       this.setprops({ data: response.data["data"] });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+  componentDidMount() {
+    axios
+      .get("http://42.193.52.117:8080/data")
+      .then((response) => {
+        this.initData({ data: response.data["data"] });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   // showModal = () => {
   //   this.setprops({
   //     visible: true,
@@ -96,7 +95,7 @@ class Content extends Component {
             </Modal>
           </div>
           <div className="bd-contex">
-            {this.props.data.map(function (element, index) {
+            {this.props.data.map((element, index) => {
               return (
                 <Fragment>
                   <Group key={index} cont={element.group} />
@@ -138,6 +137,13 @@ const mapStateToProps = (state) => {
 // 我们把store.dispatch方法挂载到props上
 const mapDispatchToProps = (dispatch) => {
   return {
+    //  初始化数据
+    initData(data) {
+      dispatch({
+        type: "init_data",
+        value: data,
+      });
+    },
     // 获取添加的图片信息
     handleInputImg(e) {
       const action = {

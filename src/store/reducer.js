@@ -1,11 +1,5 @@
 const defaultState = {
-  data: [
-    {
-      title: "腾讯 AlloyTeam 团队",
-      desc: "腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站",
-      img: "https://i.loli.net/2021/05/23/HjaynsfWE8gbu4T.jpg",
-    },
-  ],
+  data: [],
   inputValue: {
     group: "",
     title: "",
@@ -20,10 +14,12 @@ const defaultState = {
   img_errorMessage: "",
 };
 export default (state = defaultState, action) => {
-  if (action.type === "input_img") {
-    const newState = JSON.parse(JSON.stringify(state));
-    newState.inputValue.img = action.value;
-    return newState;
+  // 初始化sate数据
+  switch (action) {
+    case "init_data":
+      const newState = JSON.parse(JSON.stringify(state));
+      newState.state = action.value;
+      return newState;
   }
   return defaultState;
 };
