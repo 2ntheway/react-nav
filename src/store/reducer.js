@@ -1,5 +1,11 @@
 const defaultState = {
-  data: [],
+  data: [
+    {
+      title: "腾讯 AlloyTeam 团队",
+      desc: "腾讯社交用户体验设计，简称ISUX，腾讯设计团队网站",
+      img: "https://i.loli.net/2021/05/23/HjaynsfWE8gbu4T.jpg",
+    },
+  ],
   inputValue: {
     group: "",
     title: "",
@@ -19,6 +25,7 @@ export default (state = defaultState, action) => {
     newState.inputValue.img = action.value;
     return newState;
   }
+  return defaultState;
 };
 
 //   // 获取添加的图片信息
