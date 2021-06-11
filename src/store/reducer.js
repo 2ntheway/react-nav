@@ -17,6 +17,9 @@ export default (state = defaultState, action) => {
   // 初始化sate数据
   const newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
+    // 默认值
+    default:
+      return defaultState;
     case "init_data":
       newState.data = action.value;
       return newState;
@@ -68,10 +71,27 @@ export default (state = defaultState, action) => {
         newState.inputValue.desc &&
         newState.inputValue.img
       ) {
+        newState.data.map((item, index) => {
+          if (item.group == newState.inputValue.group) {
+            // 构建对象
+            const tmp = {
+              title: newState.inputValue.title,
+              desc: newState.inputValue.desc,
+              img: newState.inputValue.img,
+            };
+            // 拷贝state里面的数据
+            const units = [...newState.data];
+            // 拷贝需要修改数据的部分并添加数据
+            const unit = [...units[index].list, tmp];
+            // 更新state里面的数据
+            newState.data[index].list = unit;
+            // 隐藏控件
+            newState.visible = false;
+          }
+        });
       }
       return newState;
   }
-  return defaultState;
 };
 
 //   // 数据输入完整后修改state的data数据
